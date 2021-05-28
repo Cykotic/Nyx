@@ -5,12 +5,20 @@ const { prefix } = require("../../config.json")
 module.exports = {
   name: "setlogchannel",
   category: 'autocommands',
-  memberpermissions: ['MANAGE_GUILD'],
   description: "sets the log channel",
   usage: `${prefix}setlogchannel [channel]`,
   example: `${prefix}setlogchannel [log-channel]`,
   run: async (client, message, args) => {
     message.delete();
+
+    if (!message.member.hasPermission("MANAGE_GUILD"))
+    return message.channel.send(
+        new MessageEmbed()
+            .setTitle("❌ Error | you need \`MANAGE_GUILD\` to run this command")
+            .setColor(0x03fc24)
+            .setTimestamp()
+            .setFooter(message.author.tag, message.member.user.displayAvatarURL())
+    ).then(msg => msg.delete({ timeout: 10000 }).catch(e => console.log(e.message)))
 
 
     const channel = message.mentions.channels.first();

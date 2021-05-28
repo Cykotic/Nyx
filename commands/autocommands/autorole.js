@@ -8,7 +8,7 @@ module.exports = {
         if (!message.member.hasPermission("MANAGE_ROLES"))
             return message.channel.send(
                 new MessageEmbed()
-                    .setTitle("❌ Error | you don't have permission to use this command!")
+                    .setTitle("❌ Error | you need \`MANAGE_ROLES\` to run this command")
                     .setColor(0x03fc24)
                     .setTimestamp()
                     .setFooter(message.author.tag, message.member.user.displayAvatarURL())

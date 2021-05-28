@@ -5,10 +5,11 @@ module.exports = {
     name: "auto-meme",
     category : 'autocommands',
     run: async (client, message, args) => {
+
         if (!message.member.hasPermission("MANAGE_MESSAGE"))
             return message.channel.send(
                 new MessageEmbed()
-                    .setTitle("❌ Error | you don't have permission to use this command!")
+                    .setTitle("❌ Error | you need \`MANAGE_MESSAGE\` to run this command")
                     .setColor(0x03fc24)
                     .setTimestamp()
                     .setFooter(message.author.tag, message.member.user.displayAvatarURL())

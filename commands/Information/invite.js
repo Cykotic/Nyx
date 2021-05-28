@@ -9,7 +9,7 @@ module.exports = {
         const embed = new MessageEmbed()
         .addField("Nyx Bot Invite", [
             `> ❯ The link to invite ${client.user.tag}: [Click Meh!](https://dsc.gg/nyyx)`,
-            "> ❯ Here's the support: [Click Meh!](https://discord.gg/9SQWXVzj32)",
+            "> ❯ Here's the support: [Click Meh!](https://discord.gg/pSqG2UvPpr)",
         ])
         .setColor(0x03fc24)
         message.channel.send(embed)

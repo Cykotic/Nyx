@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
-const config = require("../../config.json");
+
 module.exports = {
     name: "help",
     aliases: ["h", "cmds"],
@@ -28,7 +28,7 @@ const embed = new MessageEmbed()
         return client.commands.filter(cmd => cmd.category === category)
                 .map(cmd => `\`${cmd.name}\``).join(", ")
     }
-    const info = client.categories.map(cat => stripIndents`**__${cat[0].toUpperCase() + cat.slice(1)}__**\n> ${commands(cat)}`)
+    const info = client.categories.map(cat => stripIndents`**${cat[0].toUpperCase() + cat.slice(1)}**\n> ${commands(cat)}`)
     .reduce((string, category) => string + "\n" + category);
     return message.channel.send(
         embed.setDescription(info)
