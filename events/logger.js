@@ -53,8 +53,8 @@ module.exports = c => {
           oldChannel.guild,
           "YELLOW",
           "Channel Updated - Name",
-          `Channel Name: \`${oldChannel.name}\`\nChannel Id: \`${oldChannel.id}\`\n\n` +
-          `Channel Name: \`${newChannel.name}\`\nChannel Id: \`${newChannel.id}\``
+          `Old Channel Name: \`${oldChannel.name}\`\nChannel Id: \`${oldChannel.id}\`\n\n` +
+          `New Channel Name: \`${newChannel.name}\`\nChannel Id: \`${newChannel.id}\``
         );
       } else if (oldChannel.type != newChannel.type) {
         send_log(
@@ -62,9 +62,9 @@ module.exports = c => {
           oldChannel.guild,
           "YELLOW",
           "Channel Updated - Type",
-          `Channel Name: \`${oldChannel.name}\`\nChannel Id: \`${oldChannel.id
+          `Old Channel Name: \`${oldChannel.name}\`\nChannel Id: \`${oldChannel.id
           }\`\nChannelTYPE: \`${types[oldChannel.type]}\`\n\n` +
-          `Channel Name: \`${newChannel.name}\`\nChannel Id: \`${newChannel.id
+          `New Channel Name: \`${newChannel.name}\`\nChannel Id: \`${newChannel.id
           }\`\nChannelTYPE: \`${types[newChannel.type]}\``
         );
       } else if (oldChannel.topic != newChannel.topic) {
@@ -73,8 +73,8 @@ module.exports = c => {
           oldChannel.guild,
           "YELLOW",
           "Channel UPDATED - TOPIC",
-          `Channel Name: \`${oldChannel.name}\`\nChannel Id: \`${oldChannel.id}\`\nChannelTOPIC: \`${oldChannel.topic}\`\n\n` +
-          `Channel Name: \`${newChannel.name}\`\nChannel Id: \`${newChannel.id}\`\nChannelTOPIC: \`${newChannel.topic}\``
+          `Old Channel Name: \`${oldChannel.name}\`\nChannel Id: \`${oldChannel.id}\`\nChannelTOPIC: \`${oldChannel.topic}\`\n\n` +
+          `New Channel Name: \`${newChannel.name}\`\nChannel Id: \`${newChannel.id}\`\nChannelTOPIC: \`${newChannel.topic}\``
         );
       }
     });
