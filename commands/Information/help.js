@@ -49,7 +49,8 @@ function getCMD(client,message,input){
     if(cmd.description) info += `**Description**: \`${cmd.description}\`\n`
     if(cmd.usage) {
         info += `\n**Usage**: \`${cmd.usage}\``;
-        embed.setFooter("Syntax: <> = required, [] = optional"); 
+        embed.setTimestamp()
+        embed.setFooter(message.author.tag, message.member.user.displayAvatarURL())
     }
     return message.channel.send(
         embed.setColor(0x03fc24)

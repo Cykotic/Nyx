@@ -4,6 +4,7 @@ module.exports = {
     name : 'ping',
     category: "Information",
     description : 'Returns latency and API ping',
+    cooldowns: 3,
     run : async(client, message, args) => {
         const msg = await message.channel.send(`🏓 Pinging...`)
         const embed = new MessageEmbed()
@@ -13,5 +14,6 @@ module.exports = {
             await message.channel.send(embed)
             msg.delete()
 
-    }
+ 
+        }
 }

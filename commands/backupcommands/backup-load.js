@@ -5,7 +5,10 @@ module.exports = {
     name: 'backup-load',
     category: "backupcommands",
     aliases: ['bload'],
-    description: `Create a backup of the server`,
+    description: `loads the back up of backup of the server`,
+    usage: `${prefix}backup-load`,
+    example: `${prefix}backup-load`,
+    cooldowns: 5,
     run: async (client, message, args) => {
 
         if (!message.member.hasPermission("MANAGE_GUILD"))
@@ -18,10 +21,11 @@ module.exports = {
             ).then(msg => msg.delete({ timeout: 10000 }).catch(e => console.log(e.message)))
 
         let backUpID = args[0];
-        if (!backUpID) return message.reply(
+        if (!backUpID) return message.channel.send(
             {
                 embed: {
-                    description: "Please give me the id! The bot must have dmed you before when you created a backup!"
+                    description: "Please give me the id! The bot must have dmed you before when you created a backup!",
+                    color: 0x03fc24
                 }
             }).then(msg => msg.delete({ timeout: 10000 }).catch(e => console.log(e.message)))
 
@@ -52,9 +56,11 @@ module.exports = {
             backup.load(backUpID, message.guild).then(() => {
                 backup.remove(backUpID)
             }).catch((err) => {
+                console.log(err)
                 return message.channel.send(`An error occured | Please make sure my roles is above all the roles and i have admin permissions`)
             })
         }).catch((err) => {
+            console.log(err)
             return message.channel.send(":x: | No backup found for `" + backUpID + "`!")
         })
     }

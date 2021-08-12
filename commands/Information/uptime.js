@@ -2,6 +2,7 @@ module.exports = {
     name: 'uptime',
     category: "Information",
     description: 'Returns latency and API ping',
+    cooldowns: 5,
     run: async (client, message, args) => {
 
         function duration(ms) {

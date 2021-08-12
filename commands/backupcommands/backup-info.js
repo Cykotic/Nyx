@@ -1,27 +1,30 @@
 const { MessageEmbed } = require('discord.js');
 const backup = require('discord-backup');
+const { prefix } = require("../../config.json")
 
 module.exports = {
     name: "backup-info",
     category: "backupcommands",
     aliases: ['binfo'],
     description: `show's the info of the backup of the server`,
+    usage: `${prefix}backup-info <Id>`,
+    example: `${prefix}backup-info <123456789>`,
+    cooldowns: 5,
     run: async (client, message, args) => {
 
         if (!message.member.hasPermission("MANAGE_GUILD"))
-        return message.channel.send(
-            new MessageEmbed()
-                .setTitle("❌ Error | you need \`MANAGE_GUILD\` to run this command")
-                .setColor(0x03fc24)
-                .setTimestamp()
-                .setFooter(message.author.tag, message.member.user.displayAvatarURL())
-        ).then(msg => msg.delete({ timeout: 10000 }).catch(e => console.log(e.message)))
+            return message.channel.send(
+                new MessageEmbed()
+                    .setTitle("❌ Error | you need \`MANAGE_GUILD\` to run this command")
+                    .setColor(0x03fc24)
+                    .setTimestamp()
+                    .setFooter(message.author.tag, message.member.user.displayAvatarURL())
+            ).then(msg => msg.delete({ timeout: 10000 }).catch(e => console.log(e.message)))
 
         const backupID = args.join(' ');
 
         if (!backupID)
-            return message.channel.send(':x: Please specify a valid backup ID!');
-
+            return message.channel.send({ embed: { description: "❌ Please specify a valid backup ID!", color: 0x03fc24 } })
         backup.fetch(backupID).then((backup) => {
 
             const date = new Date(backup.data.createdTimestamp);
@@ -42,7 +45,6 @@ module.exports = {
         }).catch((err) => {
 
             if (err === 'No backup found')
-                // return message.channel.send(':x: No backup found for ID ' + backupID + '!');
                 return message.channel.send(
                     {
                         embed: {
